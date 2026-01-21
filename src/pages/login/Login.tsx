@@ -3,14 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import type UsuarioLogin from "../../models/UsuarioLogin";
 import { ClipLoader } from "react-spinners";
+
 function Login() {
   const navigate = useNavigate();
 
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
-  const [usuariologin, setusuarioLogin] = useState<UsuarioLogin>(
-    {} as UsuarioLogin,
-  );
+  const [usuariologin, setusuarioLogin] = useState<UsuarioLogin>({
+    id: 0,
+    nome: "",
+    usuario: "",
+    senha: "",
+    foto: "",
+    token: "",
+  });
 
   useEffect(() => {
     if (usuario.token !== "") {
@@ -47,9 +53,7 @@ function Login() {
               placeholder="Usuário"
               className="border-2 border-argila-escuro rounded p-2"
               value={usuariologin.usuario}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={atualizarEstado}
             />
           </div>
           <div className="flex flex-col w-full">
@@ -61,15 +65,12 @@ function Login() {
               placeholder="Senha"
               className="border-2 border-argila-escuro rounded p-2"
               value={usuariologin.senha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
+              onChange={atualizarEstado}
             />
           </div>
           <button
             type="submit"
-            className="rounded bg-argila-escuro flex justify-center
-                                   hover:bg-terra-escuro text-white w-1/2 py-2"
+            className="rounded bg-argila-escuro flex justify-center hover:bg-terra-escuro text-white w-1/2 py-2"
           >
             {isLoading ? (
               <ClipLoader color="#ffffff" size={24} />
@@ -88,8 +89,7 @@ function Login() {
           </p>
         </form>
         <div
-          className="bg-[url('https://ik.imagekit.io/k6kki72wv/Login-pana%20(1).png')] lg:block hidden bg-no-repeat 
-                            w-full min-h-screen bg-cover bg-center"
+          className="bg-[url('https://ik.imagekit.io/k6kki72wv/Login-pana%20(1).png')] lg:block hidden bg-no-repeat w-full min-h-screen bg-cover bg-center"
         ></div>
       </div>
     </>
