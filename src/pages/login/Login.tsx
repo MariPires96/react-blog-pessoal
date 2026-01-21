@@ -89,7 +89,7 @@ function Login() {
           </p>
         </form>
         <div
-          className="bg-[url('https://ik.imagekit.io/k6kki72wv/Login-pana%20(1).png')] lg:block hidden bg-no-repeat w-full min-h-screen bg-cover bg-center"
+          className="bg-[url('https://ik.imagekit.io/k6kki72wv/login?updatedAt=1769012857131')] lg:block hidden bg-no-repeat w-full min-h-screen bg-cover bg-center"
         ></div>
       </div>
     </>

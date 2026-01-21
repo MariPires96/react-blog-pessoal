@@ -63,7 +63,7 @@ function Cadastro() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
-      <div className="bg-[url('https://ik.imagekit.io/k6kki72wv/Mobile%20login-amico.png')] lg:block hidden bg-no-repeat w-full min-h-screen bg-cover bg-center"></div>
+      <div className="bg-[url('https://ik.imagekit.io/k6kki72wv/sign-up')] lg:block hidden bg-no-repeat w-full min-h-screen bg-cover bg-center"></div>
 
       <form
         className="flex justify-center items-center flex-col w-2/3 gap-3"
@@ -147,7 +147,7 @@ function Cadastro() {
 
           <button
             type="submit"
-            className="rounded text-white bg-indigo-600 hover:bg-indigo-900 w-1/2 py-2 flex justify-center items-center"
+            className="rounded text-white bg-argila-escuro hover:bg-terra-escuro w-1/2 py-2 flex justify-center items-center"
             disabled={isLoading}
           >
             {isLoading ? (

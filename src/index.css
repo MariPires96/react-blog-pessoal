@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-terra-escuro: #3d3635; /* Principal/Fundo */
-  --color-argila-escuro: #854936; /* Detalhes/Bordas */
-  --color-nude-luz: #f9f6f2; /* Seções claras */
+  --color-terra-escuro: #B89A86; /* Principal/Fundo */
+  --color-argila-escuro: #D8C2B3; /* Detalhes/Bordas */
+  --color-nude-luz: #F6F1EC; /* Seções claras */
   --color-acento-ouro: #c5a059; /* Botões/Destaques */
-  --color-texto-suave: #d6cfc7; /* Textos secundários */
+  --color-texto-suave: #3F2E28; /* Textos secundários */
 }
