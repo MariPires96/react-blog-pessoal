@@ -29,12 +29,16 @@ function FormPostagem() {
   // CORREÇÃO: Ao buscar a postagem, também atualizamos o estado 'tema'
   async function buscarPostagemPorId(id: string) {
     try {
-      await buscar(`/postagens/${id}`, (data: Postagem) => {
-        setPostagem(data);
-        if (data.tema) setTema(data.tema);
-      }, {
-        headers: { Authorization: token },
-      });
+      await buscar(
+        `/postagens/${id}`,
+        (data: Postagem) => {
+          setPostagem(data);
+          if (data.tema) setTema(data.tema);
+        },
+        {
+          headers: { Authorization: token },
+        },
+      );
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
@@ -89,7 +93,9 @@ function FormPostagem() {
     }));
   }, [tema]);
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function atualizarEstado(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     setPostagem({
       ...postagem,
       [e.target.name]: e.target.value,
@@ -168,7 +174,9 @@ function FormPostagem() {
             required
             className="border-2 border-argila-escuro rounded p-2"
             value={postagem.texto || ""}
-            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => atualizarEstado(e)}
+            onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+              atualizarEstado(e)
+            }
           />
         </div>
         <div className="flex flex-col gap-2">
