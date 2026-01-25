@@ -4,6 +4,7 @@ import { ClipLoader } from "react-spinners";
 import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar, deletar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarTema() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function DeletarTema() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("Você precisa estar logado", "erro");
       navigate("/");
     }
   }, [token]);
@@ -53,12 +54,12 @@ function DeletarTema() {
         },
       });
 
-      alert("Tema apagado com sucesso!");
+      ToastAlerta("Tema apagado com sucesso!", "sucesso");
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
-        alert("Erro ao deletar o tema!");
+        ToastAlerta("Erro ao deletar o tema!", "erro");
       }
     }
 
@@ -92,13 +93,11 @@ function DeletarTema() {
             className="w-full text-slate-100 bg-argila-escuro hover:bg-terra-escuro flex items-center justify-center"
             onClick={deletarTema}
           >
-            {isLoading ?
-              <ClipLoader
-                color="#ffffff"
-                size={24}
-              /> :
+            {isLoading ? (
+              <ClipLoader color="#ffffff" size={24} />
+            ) : (
               <span>Sim</span>
-            }
+            )}
           </button>
         </div>
       </div>

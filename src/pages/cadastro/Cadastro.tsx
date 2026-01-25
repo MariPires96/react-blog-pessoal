@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -47,14 +48,14 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario(`usuarios/cadastrar`, usuario, setUsuario);
-        alert("Usuário cadastrado com sucesso!");
+        ToastAlerta("Usuário foi cadastrado com sucesso!", "sucesso")
       } catch (error) {
-        alert("Erro ao cadastrar o usuário.");
+        ToastAlerta("Erro ao cadastrar o usuário.", "erro");
       } finally {
         setIsLoading(false);
       }
     } else {
-      alert("As senhas não conferem ou são menores que 8 caracteres.");
+      ToastAlerta("As senhas não conferem ou são menores que 8 caracteres.", "erro");
       setUsuario({ ...usuario, senha: "" });
       setConfirmarSenha("");
       setIsLoading(false);
